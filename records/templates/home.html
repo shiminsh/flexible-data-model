@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Patient Records{% endblock %}
+
+{% block navbar %}
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Hospital</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="right" class="active"><a href="/">Home</a></li>
+            <li class="right"><a href="/admin/">Admin Login</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+        
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+   {% endblock %}
+
+   {% block body %}
+    <!-- Carousel
+    ================================================== -->
+    <div id="myCarousel" class="carousel slide">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src=""  alt="First slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Patient Records</h1>
+              <p>This is a web application that matian patient records and user can add fieldsitself means a web app with flexible data model.</p>
+              <p><a class="btn btn-large btn-primary" href="/register/">Register Patient</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+          <img src=""  alt="Second slide">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Manage Patient</h1>
+              <p>This is a web application that matian patient records and user can add fieldsitself means a web app with flexible data model.</p>
+              <p><a class="btn btn-large btn-primary" href="/records/">Manage Patient</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+    </div><!-- /.carousel -->
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing">
+
+      <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+          <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+          <img class="featurette-image img-responsive" src="data:image/png;base64," data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+      </div>
+
+      <hr class="featurette-divider">
+
+      
+
+      {% endblock %}
+
+
+     

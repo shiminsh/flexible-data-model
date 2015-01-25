@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Patient Records{% endblock %}
+
+{% block navbar %}
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Hospital</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="right" class="active"><a href="/">Home</a></li>
+            <li class="right"><a href="/admin/">Admin Login</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+        
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+   {% endblock %}
+
+   {% block body %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   <div class="container-marketing">
+    <div class="container">
+    <h3 class="text-center" style="font-size:3em;">Individual Patient Record</h3>
+    <div class="row">
+      <div class="col-lg-4"><img src="/media/{{ object.picture }}"></div>
+      <div class="col-lg-8">
+        <p style="font-size:2em;">First Name: {{ object.firstname }}</p>
+        <p style="font-size:2em;">Last Name: {{ object.lastname }}</p>
+        <p style="font-size:2em;">Age: {{ object.age }}</p>
+      </div>
+    </div>
+    <h3 class="text-center" style="font-size:2.5em;">Disease Record</h3>
+    <div class="row">
+        <form action="/save_disease/{{object.id}}/" method="post"  enctype="multipart/form-data">{% csrf_token %}
+    {{ form.non_field_errors }}
+      <fieldset>
+    <div class="unique">
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.symptom.label }}</label>
+            <div class="col-lg-10">
+              {{ form.symptom }}
+              <p>{{ form.symptom.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.doctor.label }}</label>
+            <div class="col-lg-10">
+              {{ form.doctor }}
+              <p>{{ form.doctor.errors }}</p>
+            </div>
+          </div>                    
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.prescription.label }}</label>
+            <div class="col-lg-10">
+              {{ form.prescription }}
+              <p>{{ form.prescription.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.date.label }}</label>
+            <div class="col-lg-10">
+              {{ form.date }}
+              <p>{{ form.date.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.doctor.label }}</label>
+            <div class="col-lg-10">
+              {{ form.doctor }}
+              <p>{{ form.doctor.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.report.label }}</label>
+            <div class="col-lg-10">
+              {{ form.report }}
+              <p>{{ form.report.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.disease.label }}</label>
+            <div class="col-lg-10">
+              {{ form.disease }}
+              <p>{{ form.disease.errors }}</p>
+            </div>
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.cured.label }}</label>
+            <div class="col-lg-10">
+              {{ form.cured }}
+              <p>{{ form.cured.errors }}</p>
+            </div>
+          </div>           
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="button" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        </form> 
+    </div>
+<button onclick="myFunction()" class="btn btn-primary btn-sm">
+  Add more fields
+</button>
+<script>
+function myFunction() {
+    var field = prompt("Please enter fieldname");
+    var label = "id_"+field.toLowerCase();
+    if (field != null) {
+        var data = "<div class='form-group'><label for="+label+ "class='col-lg-2 control-label'>"+field+"</label><div class='col-lg-10'><input type='text' id="+label+"name="+field.toLowerCase()+"></div></div>";
+    $(".unique").html($(".unique").html()+data);
+    
+    }
+}
+</script>
+   {% endblock %}

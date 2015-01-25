@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block navbar %}
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Hospital</a>
+        </div>
+        <div class="col-sm-4 col-md-4">
+            <form class="navbar-form" role="search" action="/search/">
+                <div class="input-group col-sm-12">
+                    <input type="text" class="form-control search-input" placeholder="Search" name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default btn-search" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="right" class="active"><a href="/">Home</a></li>
+            <li class="right"><a href="/admin/">Admin Login</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+        
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+{% endblock %}
+
+{% block body %}
+<div class="container marketing">
+<div class="container">
+  <h3>Patient Records</h3>
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>S. No.</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Age</th>
+          <th>Date</th>
+          <th>Mobile</th>
+          <th>Doctor</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for object in object_list %}
+      <tr onclick="individual({{object.id}})">
+        <td> {{ forloop.counter }}</td>
+        <td> {{ object.firstname }}</td>
+        <td> {{ object.lastname }}</td>
+        <td> {{ object.age }}</td>
+        <td> {{ object.date }}</td>
+        <td> {{ object.contactno }}</td>
+        <td> {{ object.doctor }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+function individual(id){
+  window.location.href="/individual/"+id+"/";
+}
+</script>
+ {% endblock %}
