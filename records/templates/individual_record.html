@@ -13,7 +13,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Company Logo</a>
+          <a class="navbar-brand" href="/">Hospital</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -45,7 +45,7 @@
         <form action="/save_disease/{{object.id}}/" method="post"  enctype="multipart/form-data">{% csrf_token %}
     {{ form.non_field_errors }}
       <fieldset>
-    <div class="unique">
+  <div class="unique">
         <div class="form-group">
             <label for="id_username" class="col-lg-2 control-label">{{ form.symptom.label }}</label>
             <div class="col-lg-10">
@@ -68,19 +68,6 @@
             </div>
           </div>
         <div class="form-group">
-            <label for="id_username" class="col-lg-2 control-label">{{ form.date.label }}</label>
-            <div class="col-lg-10">
-              {{ form.date }}
-              <p>{{ form.date.errors }}</p>
-            </div>
-          </div>
-        <div class="form-group">
-            <label for="id_username" class="col-lg-2 control-label">{{ form.doctor.label }}</label>
-            <div class="col-lg-10">
-              {{ form.doctor }}
-              <p>{{ form.doctor.errors }}</p>
-            </div>
-          </div>
         <div class="form-group">
             <label for="id_username" class="col-lg-2 control-label">{{ form.report.label }}</label>
             <div class="col-lg-10">
@@ -101,7 +88,15 @@
               {{ form.cured }}
               <p>{{ form.cured.errors }}</p>
             </div>
-          </div>           
+          </div>
+        <div class="form-group">
+            <label for="id_username" class="col-lg-2 control-label">{{ form.field.label }}</label>
+            <div class="col-lg-10" id="new">
+              {{ form.field }}
+              <p>{{ form.field.errors }}</p>
+            </div>
+          </div>       
+  </div>            
           <div class="form-group">
             <div class="col-lg-10 col-lg-offset-2">
               <button type="button" class="btn btn-default">Cancel</button>
@@ -119,8 +114,8 @@ function myFunction() {
     var label = "id_"+field.toLowerCase();
     if (field != null) {
         var data = "<div class='form-group'><label for="+label+ "class='col-lg-2 control-label'>"+field+"</label><div class='col-lg-10'><input type='text' id="+label+"name="+field.toLowerCase()+"></div></div>";
-    $(".unique").html($(".unique").html()+data);
-    
+  $(".unique").html($(".unique").html()+data);
+  
     }
 }
 </script>
