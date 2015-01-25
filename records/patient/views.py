@@ -60,4 +60,4 @@ def patient_disease(request, pk):
         else:
             return render_to_response('individual_record.html',{'object':patient, 'form':form, 'diseases':diseases}, context_instance=RequestContext(request))
     else:
-        HttpResponse('ok')
+        return HttpResponse('ok')
