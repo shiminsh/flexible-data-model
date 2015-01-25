@@ -1,6 +1,6 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.context_processors import csrf
 from django.template import RequestContext
 from django.views.generic import FormView, ListView, DetailView
@@ -56,7 +56,7 @@ def patient_disease(request, pk):
             f = form.save(commit=False)
             f.patient = Register.objects.get(id=pk)
             f.save()
-            return reverse("individual", kwargs={"pk": pk})
+            return HttpResponseRedirect(reverse("individual", kwargs={"pk": pk}))
         else:
             return render_to_response('individual_record.html',{'object':patient, 'form':form, 'diseases':diseases}, context_instance=RequestContext(request))
     else:
